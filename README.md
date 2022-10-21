@@ -1,4 +1,4 @@
-# Dream-Team-Project-1
+# Dream-Team-Project-1-Repo
 
 App idea - A Food and Cocktail pairing app that finds recipes using the ingredients you have at home.
 
