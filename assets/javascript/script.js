@@ -7,8 +7,10 @@ function getApi() {
 
   fetch(requestUrl)
     .then(function (response) {
-      console.log(response.json());
-      // return response.json();
+       return response.json();
+    })
+    .then (function(data){
+        console.log(data.meals)
     })
 }
 function getApi2() {
@@ -17,8 +19,10 @@ function getApi2() {
 
   fetch(requestUrl)
     .then(function (response) {
-      console.log(response.json());
-      // return response.json();
+      return response.json();
+    })
+    .then (function(data){
+        console.log(data.drinks)
     })
 }
 
