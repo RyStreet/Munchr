@@ -1,5 +1,5 @@
 //getApi function is called when the fetchButton is clicked
-searchTerm="broccoli"
+searchTerm="cheese"
 beepo="Kahlua"
 function getApi() {
   // Insert the API url to get a list of your repos
@@ -10,6 +10,8 @@ function getApi() {
       console.log(response.json());
       // return response.json();
     })
+    
+  
 }
 function getApi2() {
   // Insert the API url to get a list of your repos
