@@ -18,15 +18,15 @@
 
 </head>
 
-<header id="titleHeader" class="border h-36 flex justify-center ">
+<header id="titleHeader" class="border h-36 flex justify-center bg-indigo-200">
     <h2 class = "inline-block align-bottom text-[72px]  " id="munchrIcon">Munchr</h2>
 </header>
 
-<body id="documentBody" class="bg-indigo-200">
+<body id="documentBody" class="bg-amber-100">
 
-<div class="border h-32"  id="hero">
 
-    <div class="flex flex-col border h-32"  id="hero">
+
+<div class="flex flex-col bg-indigo-200"  id="hero">
 
         <div class="flex flex-col justify-center sm:hidden">
             <label for="tabs" class="sr-only">Select a type:</label>
@@ -38,10 +38,10 @@
         
         <ul class="flex flex-col hidden text-sm font-medium text-center text-gray-500 rounded-lg divide-x divide-gray-200 shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
             <li class="flex w-full">
-                <a href="#" class="inline-block p-4 w-full text-gray-900 bg-gray-100 rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" aria-current="page">Food</a>
+                <a href="#" class="inline-block p-4 w-full text-gray-900 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" aria-current="page">Food</a>
             </li>
             <li class="flex w-full">
-                <a href="#" class="inline-block p-4 w-full bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700">Drinks</a>
+                <a href="#" class="inline-block p-4 w-full bg-white rounded-lg hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700">Drinks</a>
             </li>    
 
     
@@ -50,7 +50,7 @@
 
 </div>
 
-<div class = "flex justify-center border" id = "searchBarContainer">
+<div class = "flex justify-center bg-indigo-200 pb-2 pt-2" id = "searchBarContainer">
 
     <input id="searchBar" class="w-60 border-solid hover:border-dotted"  type="search" placeholder="Search Ingredient..." aria-label="search">
     <button id="searchButton" type="submit" class="bg-white border w-10">
@@ -59,10 +59,11 @@
     
 </div>
 
-<div id="recipeContainer">
+<div class = "" id="recipeContainer">
 
 </div>
 </body>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script
@@ -71,4 +72,5 @@
       crossorigin="anonymous"
     ></script>
 <script src = "./assets/javascript/script.js"></script>
+<!-- <script src= './assets/javascript/tailwind.config.js'></script> -->
 </html>
