@@ -3,6 +3,7 @@
 // created variable to select search input, to hold space for food input, and define food search
 
 var searchInput = $("#searchBar");
+var recipeContainer = $('#recipeContainer');
 var foodSearch= "";
 var foodList = [];
 
@@ -42,11 +43,16 @@ function getApi2() {
 
 //adding a function to search through meal list for a certain food -- idk if this is doing anything lol
 
-function find(aFood){
+function find(){
+
+  
   for (var i=0; i<data.meals.length; i++){
       if(aFood.toUpperCase()===foodList[i]){
           return -1;
+
+          
       }
+
   }
   return 1;
 }
@@ -54,6 +60,8 @@ function find(aFood){
 // made function to recognize search input as variable 'food' and to call the following function
 
 function foodInfo(){
+
+
  
   if (searchInput.val().trim()!=="")
   {
@@ -78,23 +86,68 @@ function linkContent(food) {
     })
      .then (function(response){
         console.log(response.meals);
-        
-        $(".recipeContainer").html(response.strMeal); 
 
-    }); 
+        makeFoodCards(response);
 
+        console.log(response.meals);
+
+     });
+     
+// function created to get array lists on page 
+        function makeFoodCards(response) {
+
+          let foodList = response.meals
+      
+          recipeContainer.innerHTML = ''
+      
+          for (let i = 0; i < foodList.length; i++) {
+      
+          var recipeCardDiv = document.createElement("div");
+          var recipeCardName = document.createElement("h2");
+          var recipeCardInfo = document.createElement("p");
+          var recipeCardImg = document.createElement("img"); 
+      
+          recipeContainer.append(recipeCardDiv);
+          recipeCardDiv.append(recipeCardName);
+          recipeCardName.append(recipeCardImg);
+      
+          var recipeName = foodList[i].strMeal;
+          var recipeImg = foodList[i].strMealThumb;
+      
+          recipeCardName.textContent = recipeName;
+          recipeCardImg.innerHTML = recipeImg;
+
+         
+
+          };
+     
+      
+     
+          
+      
+        };       
+      
+      
+      
     
+      };
   
-  };
+
+
 
   
+
+  
+  
+
+
 
 
 getApi();
 getApi2();
 
+
 // made event listener for clicking the search button 
 
 $("#searchButton").click(foodInfo);
-
 
