@@ -95,10 +95,10 @@ function linkContent(food) {
      
 // function created to get array lists on page 
         function makeFoodCards(response) {
-
+          recipeContainer.innerHTML = ''
           let foodList = response.meals
       
-          recipeContainer.innerHTML = ''
+          
       
           for (let i = 0; i < foodList.length; i++) {
       
