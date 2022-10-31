@@ -1,153 +1,147 @@
-//getApi function is called when the fetchButton is clicked
 
-// created variable to select search input, to hold space for food input, and define food search
+const searchContainerEl = $('#recipeContainer');
+//var requestUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='+searchTerm;
 
-var searchInput = $("#searchBar");
-var recipeContainer = $('#recipeContainer');
-var foodSearch= "";
-var foodList = [];
+$(document).ready(function() {
+  // Displays search history. Needs to be coded.
+  //displaySearchHistory();
 
+  // Event listener for clicking on search button 
+  $('#searchButton').on('click', function(event) {
+      let searchTerm = $('#searchBar').val();
+      runSearch(searchTerm);
+  });
 
+  // Using a helper function to run the search more efficently.
+  const runSearch = (searchTerm) => {
+      mealSearch(searchTerm);
+      drinkSearch(searchTerm);
+  };
+});
 
-beepo="Kahlua"
-
-function getApi() {
-  // Insert the API url to get a list of your repos
-
-  // I replaced the hard coded broccoli with empty food search 
-
-  var requestUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='+foodSearch;
-
-  fetch(requestUrl)
-    .then(function (response) {
-       return response.json();
-    })
-    .then (function(data){
-        console.log(data.meals)
-    })
-    
-  
-}
-function getApi2() {
-  // Insert the API url to get a list of your repos
-  var requestUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+beepo;
-
-  fetch(requestUrl)
-    .then(function (response) {
+const mealSearch = (searchTerm) => {
+  fetch('https://www.themealdb.com/api/json/v1/1/search.php?s='+searchTerm) 
+    .then(function(response) {
       return response.json();
-    })
-    .then (function(data){
-        console.log(data.drinks)
-    })
-}
+    }).then(function(data){
+      console.log(data)
+      let resultSearch = $('#recipe');
+      mealArray = data.meals;
+      console.log(mealArray)
 
-//adding a function to search through meal list for a certain food -- idk if this is doing anything lol
+      // displays items searched up!
+      resultSearch.empty();
+      searchContainerEl.css('display', 'block');
 
-function find(){
-
-  
-  for (var i=0; i<data.meals.length; i++){
-      if(aFood.toUpperCase()===foodList[i]){
-          return -1;
-
-          
+      if (mealArray === null) {
+          const noResult = $('<p>').text('No results for waht you typed. Please try again.');
+          $('#recipe').append(noResult);
+      } else {
+          //this is how the meals/drinks are pulled and mde visible!
+          for (obj of mealArray) {
+              const rEl = $('<div>').attr('class', 'column is-3');
+              const rLink = $('<a id="' + obj.idMeal + '">');
+              const rImgSrc = $('<img>').attr('width', '200');
+              rImgSrc.attr('src', obj.strMealThumb);
+              const title = $('<p>').text(obj.strMeal);
+            
+              rLink.attr("onclick", "recipeSelected(event)");
+              rLink.append(rImgSrc);
+              rLink.append(title);
+              rEl.append(rLink);
+            
+              /* Place the new elements for the recipe on the page */
+              $('#recipe').append(rEl);
+          };
       }
+  });
+};
+const drinkSearch = (searchTerm) => {
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+searchTerm) 
+    .then(function(response) {
+      return response.json();
+    }).then(function(data){
+      console.log(data)
+      let resultSearch = $('#recipe');
+      drinkArray = data.drinks;
+      console.log(drinkArray)
 
-  }
-  return 1;
-}
-
-// made function to recognize search input as variable 'food' and to call the following function
-
-function foodInfo(){
-
+      // displays items searched up!
+      resultSearch.empty();
+      searchContainerEl.css('display', 'block');
 
  
-  if (searchInput.val().trim()!=="")
-  {
-      let food = searchInput.val().trim();
 
-      linkContent(food);
-
-
-  }
-}
-
-
-
-// adding function to link api to search bar and grab the search input 
-
-function linkContent(food) {
-  var requestUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='+food;
-
-  fetch(requestUrl)
-    .then(function (response) {
-       return response.json();
-    })
-     .then (function(response){
-        console.log(response.meals);
-
-        makeFoodCards(response);
-
-        console.log(response.meals);
-
-     });
-     
-// function created to get array lists on page 
-        function makeFoodCards(response) {
-          recipeContainer.innerHTML = ''
-          let foodList = response.meals
-      
-          
-      
-          for (let i = 0; i < foodList.length; i++) {
-      
-          var recipeCardDiv = document.createElement("div");
-          var recipeCardName = document.createElement("h2");
-          var recipeCardInfo = document.createElement("p");
-          var recipeCardImg = document.createElement("img"); 
-      
-          recipeContainer.append(recipeCardDiv);
-          recipeCardDiv.append(recipeCardName);
-          recipeCardName.append(recipeCardImg);
-      
-          var recipeName = foodList[i].strMeal;
-          var recipeImg = foodList[i].strMealThumb;
-      
-          recipeCardName.textContent = recipeName;
-          recipeCardImg.innerHTML = recipeImg;
-
-         
-
+      if (drinkArray === null) {
+          const noResult = $('<p>').text('Sorry, no results were found. Try another search.');
+          $('#recipe').append(noResult);
+      } else {
+          //this is how the meals/drinks are pulled and mde visible!
+          for (obj of drinkArray) {
+              const rEl = $('<div>').attr('class', 'column is-3');
+              const rLink = $('<a id="' + obj.idMeal + '">');
+              const rImgSrc = $('<img>').attr('width', '200');
+              rImgSrc.attr('src', obj.strDrinkThumb);
+              const title = $('<p>').text(obj.strDrink);
+            
+              rLink.attr("onclick", "recipeSelected(event)");
+              rLink.append(rImgSrc);
+              rLink.append(title);
+              rEl.append(rLink);
+            
+              /* Place the new elements for the recipe on the page */
+              $('#recipe').append(rEl);
           };
-     
-      
-     
+      }
+  });
+};
+function recipeSelected(event) {
+  // need to determine what was selected since the event doesn't capture the anchor tag
+  if(event.target.localName === "img" || event.target.localName === "p"){
+      mealSelection(event.target.parentNode.id);
+  }else{
+      mealSelection(event.target.id);
+  }    
+}
+const mealSelection = (selMealID) => {
+  let mealSelectionArray = [];
+
+  let selMealObj = mealArray.find(mealArray => mealArray.idMeal === selMealID);
+  const mealTitleEl = $("#title");
+  const mealImgEl = $("#recipe_img");
+  const ingredientEl = $("#ingredient");
+  const measurementEl = $("#measurement");
+  const instructionsEl = $("#instructions");
+
+  // Hide search results and show recipe 
+  searchContainerEl.css('display', 'none');
+  ingredientEl.empty();
+  measurementEl.empty();
+
+  mealTitleEl.text(selMealObj.strMeal);
+
+  mealImgEl.attr("src", selMealObj.strMealThumb);
+
+  instructionsEl.text(selMealObj.strInstructions);
+  
+  for (let i = 1; i <= 20; i++){
+      const ingredient = selMealObj["strIngredient" + i];
+      const measurement = selMealObj["strMeasure" + i];
+
+      if(ingredient !== "" && ingredient !== null){
+          const ingredientListItem = $("<li>");
+
+          ingredientListItem.text(ingredient);
+          ingredientEl.append(ingredientListItem);
           
-      
-        };       
-      
-      
-      
-    
+          const measurementListItem = $("<li>");
+          
+          measurementListItem.text(measurement);
+          measurementEl.append(measurementListItem);
+
+          mealSelectionArray.push({"ingredient": ingredient, "quantity": measurement});
+      } else {
+          break;
       };
-  
-
-
-
-  
-
-  
-  
-
-
-
-
-getApi();
-getApi2();
-
-
-// made event listener for clicking the search button 
-
-$("#searchButton").click(foodInfo);
-
+  };
+};
