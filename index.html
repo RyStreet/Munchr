@@ -22,13 +22,14 @@
     <h2 class = "inline-block align-bottom text-[72px]  " id="munchrIcon">Munchr</h2>
 </header>
 
-<body id="documentBody" class="bg-amber-100">
+<body id="documentBody" class="">
 
 
 
 
+<div id="twoSearchBars" class="flex bg-indigo-200">
 
-<div class = "flex justify-center bg-indigo-200 pb-2 pt-2" id = "searchBarContainer">
+<div class = "flex bg-indigo-200 justify-center w-1/2 pb-2 pt-2" id = "searchBarContainer">
 
     <input id="searchBar" class="w-60 border-solid hover:border-dotted"  type="search" placeholder="Search Meal Ingredient..." aria-label="search">
     <button id="searchButton" type="submit" class="bg-white border w-10">
@@ -37,7 +38,7 @@
     
 </div>
 
-<div class = "flex justify-center bg-indigo-200 pb-2 pt-2" id = "searchBarContainerDrink">
+<div class = "flex justify-center w-1/2 bg-indigo-200 pt-2 pb-2" id = "searchBarContainerDrink">
 
     <input id="searchBarDrink" class="w-60 border-solid hover:border-dotted"  type="searchDrink" placeholder="Search Drink Ingredient..." aria-label="search">
     <button id="searchButtonDrink" type="submit" class="bg-white border w-10">
@@ -45,26 +46,71 @@
     </button>
     
 </div>
+</div>
 
 
+<div id="mealAndDrinkContainer">
 
+<div class="w-1/2" id="mealLeft">
+    <div class="border-solid border-2 border-black bg-amber-100 p-4 m-4 font-sans" id="recipeContainer">
+            <div  id ="recipe">
+                </div>
 
-<div id="recipeContainer">
-    <div id ="recipe">
+        </div>
+
+    <div class ="border-solid border-black border-2 bg-amber-100" id="mealRecipes">
+        
+        <div class="text-2xl p-4 font-bold"  id="title"></div>
+        <div>
+            <img class ="pt-2 pb-2 pl-4"  id="recipe_img"/>
+        </div>
+
+    <div class="flex" id="ingredientPortions">
+        <div class="flex w-1/2 justify-end">
+            <ul id="measurement"></ul>
+        </div>
+        <div class="pl-2 w-1/2">
+            <ul id="ingredient"></ul>
+        </div>
+        
+    </div>
+    <div class ="p-4 leading-relaxed" id="instructions"></div>
+    </div>
+
+</div>
+
+<div id="drinkRight" class="w-1/2"> 
+<div class=" border-solid border-2 border-black bg-amber-100 p-4 m-4 font-sans" id="recipeContainerDrink">
+    <div  id ="recipeDrink">
         </div>
 
 </div>
-<div id="title"></div>
-<div>
-    <img id="recipe_img"/>
+
+<div class =" border-solid border-black border-2 bg-amber-100" id="drinkRecipes">
+
+        <div class="text-2xl p-4 font-bold"  id="titleDrink"></div>
+        <div>
+            <img class ="pt-2 pb-2 pl-4"  id="recipe_img_drink"/>
+        </div>
+
+        <div class="flex" id="ingredientPortionsDrink">
+        <div class="flex w-1/2 justify-end">
+            <ul id="measurementDrink"></ul>
+        </div>
+        <div class="pl-2 w-1/2">
+            <ul id="ingredientDrink"></ul>
+        </div>
+
+        </div>
+
+        <div class ="p-4 leading-relaxed" id="instructionsDrink"></div>
+
 </div>
-<div><ul id="measurement"></ul>
-    
 </div>
-<div>
-    <ul id="ingredient"></ul>
+
+
+
 </div>
-<div id="instructions"></div>
 
 </body>
 
