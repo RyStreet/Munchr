@@ -1,13 +1,16 @@
 
 const searchContainerEl = $('#recipeContainer');
 const searchContainerElDrink = $('#recipeContainerDrink')
+const searchHistory = $('#searchHistory')
 //var requestUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='+searchTerm;
 
 $(document).ready(function() {
   // Displays search history. Needs to be coded.
-  //displaySearchHistory();
+
 
   // Event listener for clicking on search button 
+  
+
   $('#searchButton').on('click', function(event) {
       let searchTerm = $('#searchBar').val();
       runSearch(searchTerm);
@@ -154,6 +157,13 @@ const mealSelection = (selMealID) => {
           break;
       };
   };
+
+  localStorage.setItem("meal name", selMealObj.strMeal)
+
+  var mealHistory = localStorage.getItem("meal name")
+
+
+  $("#mealHistory").append(mealHistory)
 };
 
 function recipeSelectedDrink(event) {
@@ -202,5 +212,22 @@ const drinkSelection = (selDrinkID) => {
       } else {
           break;
       };
+
   };
+
+
+  localStorage.setItem("drink name", selDrinkObj.strDrink)
+
+  var drinkHistory = localStorage.getItem("drink name")
+
+  $("#drinkHistory").append(drinkHistory) 
+
+
 };
+
+
+
+
+
+
+
