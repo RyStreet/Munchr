@@ -160,11 +160,14 @@ const mealSelection = (selMealID) => {
 
   localStorage.setItem("meal name", selMealObj.strMeal)
 
-  var mealHistory = localStorage.getItem("meal name")
+  
+};
+
+var mealHistory = localStorage.getItem("meal name")
 
 
   $("#mealHistory").append(mealHistory)
-};
+
 
 function recipeSelectedDrink(event) {
   // need to determine what was selected since the event doesn't capture the anchor tag
@@ -218,12 +221,12 @@ const drinkSelection = (selDrinkID) => {
 
   localStorage.setItem("drink name", selDrinkObj.strDrink)
 
-  var drinkHistory = localStorage.getItem("drink name")
-
-  $("#drinkHistory").append(drinkHistory) 
-
+ 
 
 };
+var drinkHistory = localStorage.getItem("drink name")
+
+$("#drinkHistory").append(drinkHistory) 
 
 
 
