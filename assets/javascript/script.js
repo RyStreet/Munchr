@@ -72,7 +72,7 @@ const drinkSearch = (searchTerm) => {
       return response.json();
     }).then(function(data){
       console.log(data)
-      let resultSearch = $('#recipe');
+      let resultSearch = $('#recipeDrink');
       drinkArray = data.drinks;
       console.log(drinkArray)
 
@@ -84,7 +84,7 @@ const drinkSearch = (searchTerm) => {
 
       if (drinkArray === null) {
           const noResult = $('<p>').text('Sorry, no results were found. Try another search.');
-          $('#recipe').append(noResult);
+          $('#recipeDrink').append(noResult);
       } else {
           //this is how the meals/drinks are pulled and mde visible!
           for (obj of drinkArray) {
@@ -100,7 +100,7 @@ const drinkSearch = (searchTerm) => {
               rEl.append(rLink);
             
               /* Place the new elements for the recipe on the page */
-              $('#recipe').append(rEl);
+              $('#recipeDrink').append(rEl);
           };
       }
   });
@@ -167,11 +167,11 @@ const drinkSelection = (selDrinkID) => {
   let drinkSelectionArray = [];
 
   let selDrinkObj = drinkArray.find(drinkArray => drinkArray.idDrink === selDrinkID);
-  const mealTitleEl = $("#title2");
-  const mealImgEl = $("#recipe_img2");
-  const ingredientEl = $("#ingredient2");
-  const measurementEl = $("#measurement2");
-  const instructionsEl = $("#instructions2");
+  const mealTitleEl = $("#titleDrink");
+  const mealImgEl = $("#recipe_imgDrink");
+  const ingredientEl = $("#ingredientDrink");
+  const measurementEl = $("#measurementDrink");
+  const instructionsEl = $("#instructionsDrink");
 
   // Hide search results and show recipe 
   searchContainerEl.css('display', 'none');
