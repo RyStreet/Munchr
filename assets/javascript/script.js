@@ -168,7 +168,7 @@ const drinkSelection = (selDrinkID) => {
 
   let selDrinkObj = drinkArray.find(drinkArray => drinkArray.idDrink === selDrinkID);
   const mealTitleEl = $("#titleDrink");
-  const mealImgEl = $("#recipe_imgDrink");
+  const mealImgEl = $("#recipe_img_Drink");
   const ingredientEl = $("#ingredientDrink");
   const measurementEl = $("#measurementDrink");
   const instructionsEl = $("#instructionsDrink");
