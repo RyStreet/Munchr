@@ -12,11 +12,20 @@ $(document).ready(function() {
       runSearch(searchTerm);
   });
 
+  $('#searchButtonDrink').on('click', function(event) {
+    let searchTerm = $('#searchBarDrink').val();
+    runSearchDrink(searchTerm);
+});
+
   // Using a helper function to run the search more efficently.
   const runSearch = (searchTerm) => {
       mealSearch(searchTerm);
-      drinkSearch(searchTerm);
-  };
+};
+
+  const runSearchDrink = (searchTerm) => {
+    drinkSearch(searchTerm);
+};
+
 });
 
 const mealSearch = (searchTerm) => {
@@ -34,7 +43,7 @@ const mealSearch = (searchTerm) => {
       searchContainerEl.css('display', 'block');
 
       if (mealArray === null) {
-          const noResult = $('<p>').text('No results for waht you typed. Please try again.');
+          const noResult = $('<p>').text('No results for what you typed. Please try again.');
           $('#recipe').append(noResult);
       } else {
           //this is how the meals/drinks are pulled and mde visible!
@@ -56,8 +65,9 @@ const mealSearch = (searchTerm) => {
       }
   });
 };
+
 const drinkSearch = (searchTerm) => {
-  fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+searchTerm) 
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s='+searchTerm) 
     .then(function(response) {
       return response.json();
     }).then(function(data){
@@ -79,12 +89,12 @@ const drinkSearch = (searchTerm) => {
           //this is how the meals/drinks are pulled and mde visible!
           for (obj of drinkArray) {
               const rEl = $('<div>').attr('class', 'column is-3');
-              const rLink = $('<a id="' + obj.idMeal + '">');
+              const rLink = $('<a id="' + obj.idDrink + '">');
               const rImgSrc = $('<img>').attr('width', '200');
               rImgSrc.attr('src', obj.strDrinkThumb);
               const title = $('<p>').text(obj.strDrink);
             
-              rLink.attr("onclick", "recipeSelected(event)");
+              rLink.attr("onclick", "recipeSelectedDrink(event)");
               rLink.append(rImgSrc);
               rLink.append(title);
               rEl.append(rLink);
@@ -95,6 +105,7 @@ const drinkSearch = (searchTerm) => {
       }
   });
 };
+
 function recipeSelected(event) {
   // need to determine what was selected since the event doesn't capture the anchor tag
   if(event.target.localName === "img" || event.target.localName === "p"){
@@ -138,8 +149,55 @@ const mealSelection = (selMealID) => {
           
           measurementListItem.text(measurement);
           measurementEl.append(measurementListItem);
+      } else {
+          break;
+      };
+  };
+};
 
-          mealSelectionArray.push({"ingredient": ingredient, "quantity": measurement});
+function recipeSelectedDrink(event) {
+  // need to determine what was selected since the event doesn't capture the anchor tag
+  if(event.target.localName === "img" || event.target.localName === "p"){
+      drinkSelection(event.target.parentNode.id);
+  }else{
+      drinkSelection(event.target.id);
+  }    
+}
+const drinkSelection = (selDrinkID) => {
+  let drinkSelectionArray = [];
+
+  let selDrinkObj = drinkArray.find(drinkArray => drinkArray.idDrink === selDrinkID);
+  const mealTitleEl = $("#title2");
+  const mealImgEl = $("#recipe_img2");
+  const ingredientEl = $("#ingredient2");
+  const measurementEl = $("#measurement2");
+  const instructionsEl = $("#instructions2");
+
+  // Hide search results and show recipe 
+  searchContainerEl.css('display', 'none');
+  ingredientEl.empty();
+  measurementEl.empty();
+
+  mealTitleEl.text(selDrinkObj.strDrink);
+
+  mealImgEl.attr("src", selDrinkObj.strDrinkThumb);
+
+  instructionsEl.text(selDrinkObj.strInstructions);
+  
+  for (let i = 1; i <= 20; i++){
+      const ingredient = selDrinkObj["strIngredient" + i];
+      const measurement = selDrinkObj["strMeasure" + i];
+
+      if(ingredient !== "" && ingredient !== null){
+          const ingredientListItem = $("<li>");
+
+          ingredientListItem.text(ingredient);
+          ingredientEl.append(ingredientListItem);
+          
+          const measurementListItem = $("<li>");
+          
+          measurementListItem.text(measurement);
+          measurementEl.append(measurementListItem);
       } else {
           break;
       };
