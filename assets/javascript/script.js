@@ -1,5 +1,6 @@
 
 const searchContainerEl = $('#recipeContainer');
+const searchContainerDrinkEl = $('#recipeContainerDrink');
 //var requestUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='+searchTerm;
 
 $(document).ready(function() {
@@ -174,7 +175,7 @@ const drinkSelection = (selDrinkID) => {
   const instructionsEl = $("#instructionsDrink");
 
   // Hide search results and show recipe 
-  searchContainerEl.css('display', 'none');
+  searchContainerDrinkEl.css('display', 'none');
   ingredientEl.empty();
   measurementEl.empty();
 
