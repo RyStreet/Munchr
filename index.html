@@ -26,41 +26,28 @@
 
 
 
-<div class="flex flex-col bg-indigo-200"  id="hero">
 
-        <div class="flex flex-col justify-center sm:hidden">
-            <label for="tabs" class="sr-only">Select a type:</label>
-            <select id="tabs" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option>Food</option>
-                <option>Drinks</option>
-            </select>
-        </div>
-        
-        <ul class="flex flex-col hidden text-sm font-medium text-center text-gray-500 rounded-lg divide-x divide-gray-200 shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
-            <li class="flex w-full">
-                <a href="#" class="inline-block p-4 w-full text-gray-900 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white" aria-current="page">Food</a>
-            </li>
-            <li class="flex w-full">
-                <a href="#" class="inline-block p-4 w-full bg-white rounded-lg hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700">Drinks</a>
-            </li>    
-
-    
-
-
-
-</div>
 
 <div class = "flex justify-center bg-indigo-200 pb-2 pt-2" id = "searchBarContainer">
 
-    <input id="searchBar" class="w-60 border-solid hover:border-dotted"  type="search" placeholder="Search Ingredient..." aria-label="search">
+    <input id="searchBar" class="w-60 border-solid hover:border-dotted"  type="search" placeholder="Search Meal Ingredient..." aria-label="search">
     <button id="searchButton" type="submit" class="bg-white border w-10">
         <i id="searchBarIcon" class="fa fa-search "></i>
     </button>
     
 </div>
 
+<div class = "flex justify-center bg-indigo-200 pb-2 pt-2" id = "searchBarContainerDrink">
 
+    <input id="searchBarDrink" class="w-60 border-solid hover:border-dotted"  type="searchDrink" placeholder="Search Drink Ingredient..." aria-label="search">
+    <button id="searchButtonDrink" type="submit" class="bg-white border w-10">
+        <i id="searchBarIconDrink" class="fa fa-search "></i>
+    </button>
+    
 </div>
+
+
+
 
 <div id="recipeContainer">
     <div id ="recipe">
