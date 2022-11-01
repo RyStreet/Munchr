@@ -8,9 +8,9 @@ Users can input an ingredient in either the food or drink search bar. Munchr wil
 
 ![image](https://user-images.githubusercontent.com/112584082/199333583-5fd9d180-83fb-4107-9739-2d00f625537f.png)
 
-Link to deployed app:
+Link to deployed app: https://rystreet.github.io/Munchr/
 
-Link to GitHub Repo: 
+Link to GitHub Repo: https://github.com/RyStreet/Munchr
 
 API Links
 
