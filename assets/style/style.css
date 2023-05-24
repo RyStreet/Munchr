@@ -12,3 +12,17 @@ font-family: 'Lobster', cursive;
         font-family: 'Lobster', cursive;
         
         }
+
+@media screen and (max-width: 590px){
+    #twoSearchBars{
+        display: block;
+        width: 100%;
+        justify-content: center;
+    }
+    #searchBarContainer{
+        width: 100%;
+    }
+    #searchBarContainerDrink{
+        width: 100%;
+    }
+}
