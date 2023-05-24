@@ -1,12 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/style/style.css">
+
     <title>Munchr</title>
+
 </head>
-<body>
+
+<header id="titleHeader" class="border h-36 flex justify-center bg-indigo-200">
+    <h2 class = "inline-block align-bottom text-[72px]  " id="munchrIcon">Munchr</h2>
+</header>
+
+<body id="documentBody" class="">
+
+
+
+
+<div id="twoSearchBars" class="flex bg-indigo-200">
+
+<div class = "flex bg-indigo-200 justify-center w-1/2 pb-2 pt-2" id = "searchBarContainer">
+
+    <input id="searchBar" class="w-60 border-solid hover:border-dotted"  type="search" placeholder="Search Meal Ingredient..." aria-label="search">
+    <button id="searchButton" type="submit" class="bg-white border w-10">
+        <i id="searchBarIcon" class="fa fa-search "></i>
+    </button>
     
+</div>
+
+<div class = "flex justify-center w-1/2 bg-indigo-200 pt-2 pb-2" id = "searchBarContainerDrink">
+
+    <input id="searchBarDrink" class="w-60 border-solid hover:border-dotted"  type="searchDrink" placeholder="Search Drink Ingredient..." aria-label="search">
+    <button id="searchButtonDrink" type="submit" class="bg-white border w-10">
+        <i id="searchBarIconDrink" class="fa fa-search "></i>
+    </button>
+    
+</div>
+</div>
+
+
+<div class="flex" id="mealAndDrinkContainer">
+
+<!-- meal container on left side -->
+<div class="w-1/2" id="mealLeft">
+    <div class=" p-4 m-4 font-sans" id="recipeContainer">
+            <div  id ="recipe">
+                </div>
+
+        </div>
+
+    <div class ="" id="mealRecipes">
+        
+        <div class="text-2xl p-4 font-bold"  id="title"></div>
+        <div>
+            <img class ="pt-2 pb-2 pl-4"  id="recipe_img"/>
+        </div>
+
+    <div class="flex" id="ingredientPortions">
+        <div class="flex w-1/2 justify-end">
+            <ul id="measurement"></ul>
+        </div>
+        <div class="pl-2 w-1/2">
+            <ul id="ingredient"></ul>
+        </div>
+        
+    </div>
+    <div class ="p-4 leading-relaxed" id="instructions"></div>
+    </div>
+
+</div>
+<!-- end of meal container -->
+
+<div class="w-1/2" id="drinkRight">
+    <div class=" p-4 m-4 font-sans" id="recipeContainerDrink">
+            <div  id ="recipeDrink">
+                </div>
+
+        </div>
+
+    <div class ="" id="drinkRecipes">
+        
+        <div class="text-2xl p-4 font-bold"  id="titleDrink"></div>
+        <div>
+            <img class ="pt-2 pb-2 pl-4"  id="recipe_img_Drink"/>
+        </div>
+
+    <div class="flex" id="ingredientPortionsDrink">
+        <div class="flex w-1/2 justify-end">
+            <ul id="measurementDrink"></ul>
+        </div>
+        <div class="pl-2 w-1/2">
+            <ul id="ingredientDrink"></ul>
+        </div>
+        
+    </div>
+    <div class ="p-4 leading-relaxed" id="instructionsDrink"></div>
+    </div>
+
+</div>
+
+</div>
+
+<!-- <div class="flex" id="searchHistory">
+   
+    <div class="text-2xl mt-2 mb-2 flex w-1/2 justify-center" id="mealHistory">
+       
+        
+    </div>
+
+    <div class="text-2xl mt-2 mb-2 flex w-1/2 justify-center" id="drinkHistory">
+        
+       
+        
+    </div>
+
+</div> -->
+
+
+
+
+
+
 </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+<script src = "./assets/javascript/script.js"></script>
+<!-- <script src= './assets/javascript/tailwind.config.js'></script> -->
 </html>
